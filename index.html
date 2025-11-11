@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://kit.fontawesome.com/373dade425.js" crossorigin="anonymous"></script>
+  <title>Calculadora y aseguradora - Final Michael Campos</title>
+  <script defer src="./js/historialcalculo.js"></script>
+  <script defer src="./js/main.js"></script>
+</head>
+<body class="bg-white">
+  <!-- HEADER / NAVBAR -->
+<header class="w-full h-16 bg-blue-600 text-white flex items-center justify-between px-6">
+  <!-- LOGO IZQUIERDA -->
+  <div class="flex items-center space-x-2">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/home.svg" alt="Inicio" class="w-6 h-6 text-white">
+    <span class="font-semibold text-lg">Securitas</span>
+  </div>
+  <!-- LINKS DERECHA -->
+  <nav class="flex space-x-6">
+    <a href="./pages/dashboard.html" class="hover:underline">Cuenta</a>
+    <a href="../pages/formulario.html" class="hover:underline">Seguros</a>
+  </nav>
+</header>
+
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="min-h-screen w-full flex flex-col items-center justify-center p-4 space-y-8">
+    
+    <!-- SECCIÓN DE COTIZADOR -->
+    <section class="bg-blue-100 rounded-lg shadow-lg p-8 w-full max-w-7xl text-center space-y-6">
+      <h1 class="text-4xl font-bold text-gray-800">
+        Calculadora de Seguros para Autos
+      </h1>
+      <p class="text-xl text-gray-700">
+        Mejoramos cualquier presupuesto. ¡La mejor cobertura al mejor precio!
+      </p>
+
+      <form id="formCotizador" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 text-left">
+        <div class="flex flex-col space-y-2">
+          <label for="marca" class="font-semibold text-gray-800">Marca</label>
+          <select id="marca" class="p-2 border bg-white border-gray-300 rounded" required>
+            <option value="">Seleccionar marca</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col space-y-2">
+          <label for="anio" class="font-semibold text-gray-800">Año</label>
+          <select id="anio" class="p-2 border bg-white border-gray-300 rounded" required>
+            <option value="">Seleccionar año</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col space-y-2">
+          <label for="modelo" class="font-semibold text-gray-800">Modelo</label>
+          <select id="modelo" class="p-2 border bg-white border-gray-300 rounded" required>
+            <option value="">Seleccionar modelo</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col space-y-2">
+          <label for="seguro" class="font-semibold text-gray-800">Seguro</label>
+          <select id="seguro" class="p-2 border bg-white border-gray-300 rounded" required>
+            <option value="">Seleccionar Seguro</option>
+          </select>
+        </div>
+      </form>
+
+      <div>
+        <button
+          class="bg-blue-600 text-white font-bold text-lg py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-200">
+          COTIZAR
+        </button>
+      </div>
+
+      <div id="resultado" class="mt-6 text-gray-800 text-lg font-semibold"></div>
+    </section>
+
+    <!-- HISTORIAL -->
+    <section class="bg-blue-100 rounded-lg shadow-lg p-8 w-full max-w-7xl text-left space-y-4 overflow-auto" style="max-height: 400px;">
+      <h2 class="text-2xl font-bold text-gray-800 mb-3 text-center">Historial de Cotizaciones</h2>
+      <div id="historial" class="space-y-3"></div>
+    </section>
+
+  </main>
+</body>
+</html>

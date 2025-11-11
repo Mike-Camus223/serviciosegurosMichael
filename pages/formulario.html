@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Formulario de cotización</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://kit.fontawesome.com/373dade425.js" crossorigin="anonymous"></script>
+  <script defer src="../js/formulario.js"></script>
+</head>
+<body class="bg-white">
+    <header class="w-full h-16 bg-blue-600 text-white flex items-center justify-between px-6">
+  <!-- LOGO IZQUIERDA -->
+  <div class="flex items-center space-x-2">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/home.svg" alt="Inicio" class="w-6 h-6 text-white">
+    <span class="font-semibold text-lg">Securitas</span>
+  </div>
+
+  <!-- LINKS DERECHA -->
+  <nav class="flex space-x-6">
+    <a href="#" class="hover:underline">Cuenta</a>
+    <a href="../pages/formulario.html" class="hover:underline">Seguros</a>
+  </nav>
+</header>
+  <div class="min-h-screen flex items-center justify-center p-6">
+    <div class="bg-blue-100 rounded-lg shadow-lg p-8 w-full max-w-4xl overflow-auto" style="max-height: 90vh;">
+      <h1 class="text-3xl font-bold text-gray-800 text-center mb-4">Formulario de Contratación</h1>
+      <p class="text-sm text-gray-700 text-center mb-6">Los campos marcados con * son obligatorios.</p>
+
+      <form id="formFinal" class="grid grid-cols-1 gap-4 text-left">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-medium">Marca *</label>
+            <input id="marca" type="text" readonly class="mt-1 block w-full p-2 border rounded bg-gray-100" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Año *</label>
+            <input id="anio" type="text" readonly class="mt-1 block w-full p-2 border rounded bg-gray-100" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Modelo *</label>
+            <input id="modelo" type="text" readonly class="mt-1 block w-full p-2 border rounded bg-gray-100" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Versión *</label>
+            <input id="version" type="text" readonly class="mt-1 block w-full p-2 border rounded bg-gray-100" required>
+          </div>
+        </div>
+
+        <hr class="my-2">
+
+        <div>
+          <label class="block text-sm font-medium">¿Posee vehículo a nombre suyo? *</label>
+          <select id="posee" class="mt-1 block w-full p-2 border rounded" required>
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-medium">Código postal *</label>
+            <input id="cp" type="text" inputmode="numeric" class="mt-1 block w-full p-2 border rounded" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Edad *</label>
+            <input id="edad" type="number" min="18" max="120" class="mt-1 block w-full p-2 border rounded" required>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-medium">Sexo *</label>
+            <select id="sexo" class="mt-1 block w-full p-2 border rounded" required>
+              <option value="">Seleccionar</option>
+              <option value="masculino">Masculino</option>
+              <option value="femenino">Femenino</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Estado civil *</label>
+            <select id="estadoCivil" class="mt-1 block w-full p-2 border rounded" required>
+              <option value="">Seleccionar</option>
+              <option value="soltero">Soltero/a</option>
+              <option value="casado">Casado/a</option>
+              <option value="conviviente">Conviviente</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">Nombre y apellido *</label>
+          <input id="nombre" type="text" class="mt-1 block w-full p-2 border rounded" required>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-medium">Teléfono celular *</label>
+            <input id="telefono" type="tel" inputmode="tel" class="mt-1 block w-full p-2 border rounded" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Correo electrónico *</label>
+            <input id="email" type="email" class="mt-1 block w-full p-2 border rounded" required>
+          </div>
+        </div>
+
+        <div class="pt-4 text-center">
+          <button id="btnEnviar" type="submit" class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition font-semibold">
+            Enviar solicitud
+          </button>
+        </div>
+      </form>
+
+      <p class="text-xs text-gray-600 text-center mt-4">Este es un simulador — no se realizan cobros reales.</p>
+    </div>
+  </div>
+
+  <div id="miniModal" class="fixed inset-0 flex items-center justify-center bg-black/40 opacity-0 scale-95 pointer-events-none transition-all duration-300">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md text-center">
+      <h2 class="text-xl font-bold mb-3 text-blue-700">Revisá tus datos antes de confirmar</h2>
+      <div id="modalContenido" class="text-left text-sm text-gray-700 space-y-1 mb-4"></div>
+      <div class="flex justify-center gap-4">
+        <button id="btnEditar" class="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded">Editar</button>
+        <button id="btnConfirmar" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Enviar</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

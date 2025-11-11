@@ -1,0 +1,62 @@
+{
+    "marcas": [
+        "Toyota",
+        "Volkswagen",
+        "Ford",
+        "Renault"
+    ],
+    "anios": [
+        {
+            "anio": 2025,
+            "factor": 1
+        },
+        {
+            "anio": 2024,
+            "factor": 0.95
+        },
+        {
+            "anio": 2023,
+            "factor": 0.9
+        },
+        {
+            "anio": 2022,
+            "factor": 0.85
+        },
+        {
+            "anio": 2021,
+            "factor": 0.8
+        }
+    ],
+    "modelos": [
+        {
+            "nombre": "Sedán",
+            "precioBase": 12000000
+        },
+        {
+            "nombre": "SUV",
+            "precioBase": 18000000
+        },
+        {
+            "nombre": "Pickup",
+            "precioBase": 25000000
+        },
+        {
+            "nombre": "Hatchback",
+            "precioBase": 10000000
+        }
+    ],
+    "versiones": [
+        {
+            "nombre": "Basico",
+            "multiplicador": 1
+        },
+        {
+            "nombre": "Full",
+            "multiplicador": 1.2
+        },
+        {
+            "nombre": "Premium",
+            "multiplicador": 1.5
+        }
+    ]
+}
