@@ -146,11 +146,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     Swal.fire({
       icon: "success",
-      title: "Seguro enviado",
-      text: "Esperá que un asesor se comunique con vos.",
-      confirmButtonText: "Aceptar"
+      title: "Datos cargados",
+      text: "Ahora completá el pago.",
+      confirmButtonText: "Ir al checkout"
     }).then(() => {
-      window.location.href = "../index.html";
+      window.location.href = "checkout.html";
     });
   };
 });

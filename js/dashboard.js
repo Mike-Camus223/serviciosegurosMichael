@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><strong>Nombre:</strong> ${seguro.nombre}</p>
         <p><strong>Vehículo:</strong> ${seguro.marca} ${seguro.modelo} (${seguro.anio})</p>
         <p><strong>Versión:</strong> ${seguro.version}</p>
-        <p><strong>Precio mensual:</strong> $${seguro.precioMensual}</p>
+        <p><strong>Pago total:</strong> $${seguro.precioMensual}</p>
         <p><strong>Correo:</strong> ${seguro.email}</p>
         <p><strong>Fecha de contratación:</strong> ${seguro.fecha || "Hoy"}</p>
         <button id="btnVerMas" class="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Ver Detalles</button>
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><b>Marca:</b> ${seguro.marca}</p>
           <p><b>Modelo:</b> ${seguro.modelo}</p>
           <p><b>Versión:</b> ${seguro.version}</p>
-          <p><b>Precio mensual:</b> $${seguro.precioMensual}</p>
+          <p><b>Pago total:</b> $${seguro.precioMensual}</p>
           <p><b>Email:</b> ${seguro.email}</p>
           <p><b>Estado Civil:</b> ${seguro.estadoCivil}</p>
           <p><b>Edad:</b> ${seguro.edad}</p>
