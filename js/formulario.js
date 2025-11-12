@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const telefonoInput = document.getElementById("telefono");
   const emailInput = document.getElementById("email");
   const form = document.getElementById("formFinal");
+  let dataGlobal = null;
 
   // Traer la cotización guardada
   let ultima = localStorage.getItem("ultimaCotizacion");
@@ -41,18 +42,61 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     return;
   }
+  fetch("../data/data.json")
+    .then(res => res.json())
+    .then(data => {
+      dataGlobal = data;
 
-  // Precargar datos del vehículo
-  marcaInput.value = ultima.marca || "";
-  anioInput.value = ultima.anio || "";
-  modeloInput.value = ultima.modelo || "";
-  versionInput.value = ultima.version || "";
+      marcaInput.innerHTML = '<option value="">Seleccionar</option>';
+      data.marcas.forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = m;
+        marcaInput.appendChild(opt);
+      });
 
-  // Enviar formulario
+      anioInput.innerHTML = '<option value="">Seleccionar</option>';
+      data.anios.forEach(a => {
+        const opt = document.createElement("option");
+        opt.value = a.anio;
+        opt.textContent = a.anio;
+        anioInput.appendChild(opt);
+      });
+
+      modeloInput.innerHTML = '<option value="">Seleccionar</option>';
+      data.modelos.forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m.nombre;
+        opt.textContent = m.nombre;
+        modeloInput.appendChild(opt);
+      });
+
+      versionInput.innerHTML = '<option value="">Seleccionar</option>';
+      data.versiones.forEach(v => {
+        const opt = document.createElement("option");
+        opt.value = v.nombre;
+        opt.textContent = v.nombre;
+        versionInput.appendChild(opt);
+      });
+
+      if (ultima) {
+        marcaInput.value = ultima.marca || "";
+        anioInput.value = ultima.anio || "";
+        modeloInput.value = ultima.modelo || "";
+        versionInput.value = ultima.version || "";
+      }
+    })
+    .catch(() => {
+      Swal.fire({
+        icon: "error",
+        title: "Error al cargar opciones",
+        text: "No se pudo leer data.json"
+      });
+    });
+
   form.addEventListener("submit", function(event) {
   event.preventDefault();
 
-  // Validaciones básicas (igual que antes)
   if (!poseeInput.value) {
     Swal.fire("Error", "Seleccioná si posees el vehículo", "error");
     return;
@@ -86,7 +130,6 @@ document.addEventListener("DOMContentLoaded", function() {
     return;
   }
 
-  // Crear el objeto con los datos
   const datosFinales = {
     marca: marcaInput.value,
     anio: anioInput.value,
@@ -103,7 +146,6 @@ document.addEventListener("DOMContentLoaded", function() {
     fecha: new Date().toLocaleString()
   };
 
-  // Mostrar el modal con los datos
   const modal = document.getElementById("miniModal");
   const modalContenido = document.getElementById("modalContenido");
 
@@ -118,7 +160,6 @@ document.addEventListener("DOMContentLoaded", function() {
     <p><strong>Código Postal:</strong> ${datosFinales.codigoPostal}</p>
   `;
 
-  // Mostrar animadamente
   modal.classList.remove("pointer-events-none");
   setTimeout(() => {
     modal.classList.remove("opacity-0", "scale-95");

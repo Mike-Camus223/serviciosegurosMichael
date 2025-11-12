@@ -3,26 +3,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnSalir = document.getElementById("btnSalir");
   const contenido = document.getElementById("contenido");
 
-  btnHistorial.addEventListener("click", () => {
+  const renderHistorial = () => {
     const seguro = JSON.parse(localStorage.getItem("seguroComprado"));
-
-    if (!seguro) {
-      Swal.fire("Sin historial", "No tenés seguros contratados aún.", "info");
-      return;
-    }
 
     contenido.innerHTML = `
       <h2 class="text-xl font-bold text-blue-700 mb-4">Historial de Seguros</h2>
-      <div class="bg-white shadow-md rounded-lg p-4">
+      ${seguro ? `
+      <div class="bg-blue-600 text-white shadow-md rounded-lg p-4">
         <p><strong>Nombre:</strong> ${seguro.nombre}</p>
         <p><strong>Vehículo:</strong> ${seguro.marca} ${seguro.modelo} (${seguro.anio})</p>
         <p><strong>Versión:</strong> ${seguro.version}</p>
         <p><strong>Pago total:</strong> $${seguro.precioMensual}</p>
         <p><strong>Correo:</strong> ${seguro.email}</p>
         <p><strong>Fecha de contratación:</strong> ${seguro.fecha || "Hoy"}</p>
-        <button id="btnVerMas" class="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Ver Detalles</button>
+        <button id="btnVerMas" class="mt-3 bg-white text-blue-700 px-4 py-2 rounded hover:bg-blue-100">Ver Detalles</button>
       </div>
+      ` : `
+      <div class="bg-blue-600 text-white shadow-md rounded-lg p-4">
+        <p>No tenés seguros contratados aún.</p>
+      </div>`}
     `;
+
+    if (!seguro) {
+      Swal.fire("Sin historial", "No tenés seguros contratados aún.", "info");
+      return;
+    }
 
     document.getElementById("btnVerMas").addEventListener("click", () => {
       Swal.fire({
@@ -39,7 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
         confirmButtonText: "Cerrar"
       });
     });
-  });
+  };
+
+  btnHistorial.addEventListener("click", renderHistorial);
+  // Mostrar historial directamente al cargar
+  renderHistorial();
 
   btnSalir.addEventListener("click", () => {
     Swal.fire({

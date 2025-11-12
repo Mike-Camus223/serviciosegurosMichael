@@ -9,42 +9,45 @@
   <script src="https://kit.fontawesome.com/373dade425.js" crossorigin="anonymous"></script>
   <script defer src="../js/formulario.js"></script>
 </head>
-<body class="bg-white">
+<body class="bg-blue-50">
     <header class="w-full h-16 bg-blue-600 text-white flex items-center justify-between px-6">
-  <!-- LOGO IZQUIERDA -->
-  <div class="flex items-center space-x-2">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/home.svg" alt="Inicio" class="w-6 h-6 text-white">
+  <a href="/index.html" class="flex items-center space-x-2">
+    <i class="fa-solid fa-car text-2xl text-white"></i>
     <span class="font-semibold text-lg">Securitas</span>
-  </div>
-
-  <!-- LINKS DERECHA -->
+  </a>
   <nav class="flex space-x-6">
-    <a href="#" class="hover:underline">Cuenta</a>
-    <a href="formulario.html" class="hover:underline">Seguros</a>
+    <a href="./pages/dashboard.html" class="hover:underline">Cuenta</a>
+    <a href="../pages/formulario.html" class="hover:underline">Seguros</a>
   </nav>
 </header>
   <div class="min-h-screen flex items-center justify-center p-6">
-    <div class="bg-blue-100 rounded-lg shadow-lg p-8 w-full max-w-4xl overflow-auto" style="max-height: 90vh;">
-      <h1 class="text-3xl font-bold text-gray-800 text-center mb-4">Formulario de Contratación</h1>
-      <p class="text-sm text-gray-700 text-center mb-6">Los campos marcados con * son obligatorios.</p>
-
+    <div class="bg-blue-600 text-white rounded-lg shadow-lg p-8 w-full max-w-4xl overflow-auto" style="max-height: 90vh;">
+      <h1 class="text-3xl font-bold text-white text-center mb-4">Formulario de Contratación</h1>
       <form id="formFinal" class="grid grid-cols-1 gap-4 text-left">
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-sm font-medium">Marca *</label>
-            <input id="marca" type="text" readonly class="mt-1 block w-full p-2 border rounded bg-gray-100" required>
+            <select id="marca" class="mt-1 block w-full p-2 border rounded bg-white text-gray-800" required>
+              <option value="">Seleccionar</option>
+            </select>
           </div>
           <div>
             <label class="block text-sm font-medium">Año *</label>
-            <input id="anio" type="text" readonly class="mt-1 block w-full p-2 border rounded bg-gray-100" required>
+            <select id="anio" class="mt-1 block w-full p-2 border rounded bg-white text-gray-800" required>
+              <option value="">Seleccionar</option>
+            </select>
           </div>
           <div>
             <label class="block text-sm font-medium">Modelo *</label>
-            <input id="modelo" type="text" readonly class="mt-1 block w-full p-2 border rounded bg-gray-100" required>
+            <select id="modelo" class="mt-1 block w-full p-2 border rounded bg-white text-gray-800" required>
+              <option value="">Seleccionar</option>
+            </select>
           </div>
           <div>
             <label class="block text-sm font-medium">Versión *</label>
-            <input id="version" type="text" readonly class="mt-1 block w-full p-2 border rounded bg-gray-100" required>
+            <select id="version" class="mt-1 block w-full p-2 border rounded bg-white text-gray-800" required>
+              <option value="">Seleccionar</option>
+            </select>
           </div>
         </div>
 
@@ -52,7 +55,7 @@
 
         <div>
           <label class="block text-sm font-medium">¿Posee vehículo a nombre suyo? *</label>
-          <select id="posee" class="mt-1 block w-full p-2 border rounded" required>
+          <select id="posee" class="mt-1 block w-full p-2 border rounded bg-white text-gray-800" required>
             <option value="">Seleccionar</option>
             <option value="si">Sí</option>
             <option value="no">No</option>
@@ -62,18 +65,18 @@
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-sm font-medium">Código postal *</label>
-            <input id="cp" type="text" inputmode="numeric" class="mt-1 block w-full p-2 border rounded" required>
+            <input id="cp" type="text" inputmode="numeric" class="mt-1 block w-full p-2 border rounded bg-white text-gray-800" required>
           </div>
           <div>
             <label class="block text-sm font-medium">Edad *</label>
-            <input id="edad" type="number" min="18" max="120" class="mt-1 block w-full p-2 border rounded" required>
+            <input id="edad" type="number" min="18" max="120" class="mt-1 block w-full p-2 border rounded bg-white text-gray-800" required>
           </div>
         </div>
 
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-sm font-medium">Sexo *</label>
-            <select id="sexo" class="mt-1 block w-full p-2 border rounded" required>
+            <select id="sexo" class="mt-1 block w-full p-2 border rounded bg-white text-gray-800" required>
               <option value="">Seleccionar</option>
               <option value="masculino">Masculino</option>
               <option value="femenino">Femenino</option>
@@ -82,7 +85,7 @@
           </div>
           <div>
             <label class="block text-sm font-medium">Estado civil *</label>
-            <select id="estadoCivil" class="mt-1 block w-full p-2 border rounded" required>
+            <select id="estadoCivil" class="mt-1 block w-full p-2 border rounded bg-white text-gray-800" required>
               <option value="">Seleccionar</option>
               <option value="soltero">Soltero/a</option>
               <option value="casado">Casado/a</option>
@@ -94,28 +97,26 @@
 
         <div>
           <label class="block text-sm font-medium">Nombre y apellido *</label>
-          <input id="nombre" type="text" class="mt-1 block w-full p-2 border rounded" required>
+          <input id="nombre" type="text" class="mt-1 block w-full p-2 border rounded bg-white text-gray-800" required>
         </div>
 
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-sm font-medium">Teléfono celular *</label>
-            <input id="telefono" type="tel" inputmode="tel" class="mt-1 block w-full p-2 border rounded" required>
+            <input id="telefono" type="tel" inputmode="tel" class="mt-1 block w-full p-2 border rounded bg-white text-gray-800" required>
           </div>
           <div>
             <label class="block text-sm font-medium">Correo electrónico *</label>
-            <input id="email" type="email" class="mt-1 block w-full p-2 border rounded" required>
+            <input id="email" type="email" class="mt-1 block w-full p-2 border rounded bg-white text-gray-800" required>
           </div>
         </div>
 
         <div class="pt-4 text-center">
-          <button id="btnEnviar" type="submit" class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition font-semibold">
+          <button id="btnEnviar" type="submit" class="bg-blue-800 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition font-semibold">
             Enviar solicitud
           </button>
         </div>
       </form>
-
-      <p class="text-xs text-gray-600 text-center mt-4">Este es un simulador — no se realizan cobros reales.</p>
     </div>
   </div>
 

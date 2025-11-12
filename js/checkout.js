@@ -8,13 +8,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const nombre = document.getElementById("nombreTarjeta").value.trim();
     const venc = document.getElementById("vencimiento").value.trim();
     const cvv = document.getElementById("cvv").value.trim();
-
-    if (tarjeta.length < 16 || !nombre || venc.length < 4 || cvv.length < 3) {
-      Swal.fire("Error", "Completá todos los campos correctamente", "error");
+    if (!/^\d{16}$/.test(tarjeta)) {
+      Swal.fire("Error", "Número de tarjeta inválido (16 dígitos)", "error");
       return;
     }
-
-    // Simular compra exitosa
+    if (!nombre) {
+      Swal.fire("Error", "Ingresá el nombre del titular", "error");
+      return;
+    }
+    if (!/^\d{2}\/\d{2}$/.test(venc)) {
+      Swal.fire("Error", "Vencimiento inválido (MM/AA)", "error");
+      return;
+    }
+    const mes = parseInt(venc.split("/")[0], 10);
+    if (mes < 1 || mes > 12) {
+      Swal.fire("Error", "Mes de vencimiento inválido", "error");
+      return;
+    }
+    if (!/^\d{3}$/.test(cvv)) {
+      Swal.fire("Error", "CVV inválido (3 dígitos)", "error");
+      return;
+    }
     const datosFinales = JSON.parse(localStorage.getItem("datosFinales")) || {};
     datosFinales.precioMensual = (Math.random() * 30000 + 20000).toFixed(2); // precio aleatorio
 

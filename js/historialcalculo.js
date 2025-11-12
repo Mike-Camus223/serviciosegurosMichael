@@ -13,7 +13,7 @@ const renderHistorial = () => {
   const historial = JSON.parse(localStorage.getItem("historialCotizaciones")) || [];
 
   if (historial.length === 0) {
-    historialDiv.innerHTML = `<p class="text-gray-600 text-sm">No hay cotizaciones guardadas aún.</p>`;
+    historialDiv.innerHTML = `<p class="text-white text-sm">No hay cotizaciones guardadas aún.</p>`;
     return;
   }
 
